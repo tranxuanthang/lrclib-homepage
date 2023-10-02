@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-indigo-100 text-indigo-900;
+}
+
+.button {
+  @apply transition uppercase font-bold flex gap-1 items-center justify-center;
+}
+
+.button-normal {
+  @apply bg-indigo-200 hover:bg-indigo-300 text-indigo-900 active:bg-indigo-400;
+}
+
+.button-blend {
+  @apply hover:bg-indigo-300 text-indigo-900 active:bg-indigo-400;
+}
