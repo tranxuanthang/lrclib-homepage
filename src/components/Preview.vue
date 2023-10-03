@@ -11,8 +11,8 @@
           <template v-if="props.record.syncedLyrics && props.record.plainLyrics">
             <div class="flex justify-center">
               <div class="rounded-full p-1 bg-indigo-100 flex justify-center gap-1">
-                <button class="button text-sm w-44 px-4 py-2 rounded-full" :class="{ 'bg-indigo-800 text-indigo-100': lyricsType === 'synced', 'hover:bg-indigo-200': lyricsType !== 'synced' }" @click="lyricsType = 'synced'">Synced Lyrics</button>
-                <button class="button text-sm w-44 px-4 py-2 rounded-full" :class="{ 'bg-indigo-800 text-indigo-100': lyricsType !== 'synced', 'hover:bg-indigo-200': lyricsType === 'synced' }" @click="lyricsType = 'plain'">Plain Lyrics</button>
+                <button class="button text-xs w-36 px-3 py-1.5 rounded-full" :class="{ 'bg-indigo-800 text-indigo-100': lyricsType === 'synced', 'hover:bg-indigo-200': lyricsType !== 'synced' }" @click="lyricsType = 'synced'">Synced Lyrics</button>
+                <button class="button text-xs w-36 px-3 py-1.5 rounded-full" :class="{ 'bg-indigo-800 text-indigo-100': lyricsType !== 'synced', 'hover:bg-indigo-200': lyricsType === 'synced' }" @click="lyricsType = 'plain'">Plain Lyrics</button>
               </div>
             </div>
 

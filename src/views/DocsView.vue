@@ -17,7 +17,7 @@
       </p>
 
       <p>
-        At present, this API has no rate limiting in place and is openly accessible to all users and applications.
+        This API has no rate limiting in place and is openly accessible to all users and applications.
         There is no need for an API key or any kind of registering!
       </p>
 
