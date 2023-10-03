@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="fixed top-0 left-0 h-full w-full flex items-center justify-center z-30">
-      <div class="w-full h-[80vh] max-w-screen-sm rounded-lg m-4 bg-white flex flex-col gap-2">
+    <div class="fixed top-0 left-0 h-full w-full flex items-center justify-center z-30 p-4">
+      <div class="w-full h-[80vh] max-w-screen-sm rounded-lg bg-white flex flex-col gap-2">
         <div class="flex-none flex justify-between items-center px-6 py-2">
           <div class="text-thin text-xl">Preview</div>
           <button class="button button-blend transition rounded-full p-4" @click="close"><Close /></button>
@@ -11,8 +11,8 @@
           <template v-if="props.record.syncedLyrics && props.record.plainLyrics">
             <div class="flex justify-center">
               <div class="rounded-full p-1 bg-indigo-100 flex justify-center gap-1">
-                <button class="button text-sm w-44 px-4 py-2 rounded-full" :class="{ 'bg-indigo-800 text-indigo-100': lyricsType === 'synced', 'hover:bg-indigo-200': lyricsType !== 'synced' }" @click="lyricsType = 'synced'">Plain Lyrics</button>
-                <button class="button text-sm w-44 px-4 py-2 rounded-full" :class="{ 'bg-indigo-800 text-indigo-100': lyricsType !== 'synced', 'hover:bg-indigo-200': lyricsType === 'synced' }" @click="lyricsType = 'plain'">Synced Lyrics</button>
+                <button class="button text-sm w-44 px-4 py-2 rounded-full" :class="{ 'bg-indigo-800 text-indigo-100': lyricsType === 'synced', 'hover:bg-indigo-200': lyricsType !== 'synced' }" @click="lyricsType = 'synced'">Synced Lyrics</button>
+                <button class="button text-sm w-44 px-4 py-2 rounded-full" :class="{ 'bg-indigo-800 text-indigo-100': lyricsType !== 'synced', 'hover:bg-indigo-200': lyricsType === 'synced' }" @click="lyricsType = 'plain'">Plain Lyrics</button>
               </div>
             </div>
 
@@ -57,12 +57,6 @@ const emit = defineEmits(['close'])
 const props = defineProps(['record'])
 
 const lyricsType = ref('synced')
-
-onMounted(() => {
-  if (!!props.record.syncedLyrics) {
-
-  }
-})
 
 const close = () => {
   emit('close')

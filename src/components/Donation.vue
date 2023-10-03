@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="fixed top-0 left-0 h-full w-full flex items-center justify-center z-30">
-      <div class="w-full h-[80vh] max-w-screen-sm rounded-lg m-4 bg-white flex flex-col gap-2">
+    <div class="fixed top-0 left-0 h-full w-full flex items-center justify-center z-30 p-4">
+      <div class="w-full h-[80vh] max-w-screen-sm rounded-lg bg-white flex flex-col gap-2">
         <div class="flex-none flex justify-between items-center px-6 py-2">
           <div class="text-thin text-xl">Donation</div>
           <button class="button button-blend transition rounded-full p-4" @click="close"><Close /></button>
