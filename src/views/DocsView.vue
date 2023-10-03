@@ -45,7 +45,7 @@
             If you prefer to avoid this behavior, please use the <code>/api/get-cached</code> API instead.
           </p>
           <p>
-            <strong>Note:</strong> The provided duration is crucial. LRCLIB will attempt to provide the lyrics
+            <strong>Note:</strong> The provided <code>duration</code> is crucial. LRCLIB will attempt to provide the lyrics
             only when the duration matches the record in LRCLIB's database, or at least with
             a difference of ±2 seconds in duration.
           </p>
@@ -180,15 +180,17 @@
         <template #route>/api/search</template>
         <template #description>
           <p>
-            Search for lyrics records by a keyword. This API returns an array of lyrics records that matched by the search condition(s).
+            Search for lyrics records using keywords. This API returns an array of lyrics records
+            that match the specified search condition(s).
           </p>
 
           <p>
-            At least ONE of the two parameters: <code>q</code> AND <code>track_name</code> must be present.
+            At least ONE of the two parameters, <code>q</code> OR <code>track_name</code>, must be present.
           </p>
 
           <p>
-            <strong>Note:</strong> This API only returns 20 results or less, and currently has no pagination. This is subject to change in the future.
+            <strong>Note:</strong> This API currently returns a maximum of 20 results and does not support pagination.
+            These limitations are subject to change in the future.
           </p>
 
           <h4>Query parameters</h4>
@@ -225,6 +227,107 @@
           <p>
             JSON array of the lyrics records with the following parameters: <code>id</code>, <code>trackName</code>, <code>artistName</code>, <code>albumName</code>,
             <code>duration</code>, <code>instrumental</code>, <code>plainLyrics</code> and <code>syncedLyrics</code>.
+          </p>
+        </template>
+      </ApiBlock>
+
+      <ApiBlock>
+        <template #title>Publish a new lyrics</template>
+        <template #method>POST</template>
+        <template #route>/api/publish</template>
+        <template #description>
+          <p><strong>Note:</strong> This API is experimental and subject to potential changes in the future.</p>
+          <p>Publish a new lyrics to LRCLIB database. This API can be called anonymously, and no registration is required.</p>
+          <p>If BOTH plain lyrics and synchronized lyrics are left empty, the track will be marked as instrumental.</p>
+          <p>All previous revisions of the lyrics will still be kept when publishing lyrics for a track that already has existing lyrics.</p>
+
+          <h4>Obtaining the Publish Token</h4>
+          <p>
+            Every <code>POST /api/publish</code> request must include a fresh,
+            valid Publish Token in the <code>X-Publish-Token</code> header. Each Publish Token can only be used once.
+          </p>
+          <p>The Publish Token consists of two parts: a <code>prefix</code> and a <code>nonce</code> concatenated with a colon (<code>{prefix}:{nonce}</code>).
+          </p>
+          <p>
+            To obtain a <code>prefix</code>, you need to make a request to the <code>POST /api/request-challenge</code> API.
+            This will provide you with a fresh prefix string and a target string.
+          </p>
+          <p>
+            To find a valid <code>nonce</code>, you must solve a proof-of-work cryptographic challenge
+            using the provided <code>prefix</code> and <code>target</code>.
+            For implementation examples, please refer to
+            <a href="https://github.com/tranxuanthang/lrcget/blob/main/src-tauri/src/lrclib/challenge_solver.rs" target="_blank"
+            >the source code of LRCGET</a>.
+          </p>
+
+          <h4>Request header</h4>
+          <p>
+            <table>
+              <thead>
+                <th>Header name</th>
+                <th>Required</th>
+                <th>Description</th>
+              </thead>
+
+              <tbody>
+                <tr><td>X-Publish-Token</td><td>true</td><td>A Publish Token that can be retrieved via solving a cryptographic challenge</td></tr>
+              </tbody>
+            </table>
+          </p>
+          <h4>Request JSON body parameters</h4>
+          <p>
+            <table>
+              <thead>
+                <th>Field</th>
+                <th>Required</th>
+                <th>Type</th>
+                <th>Description</th>
+              </thead>
+
+              <tbody>
+                <tr><td>trackName</td><td>true</td><td>string</td><td>Title of the track</td></tr>
+                <tr><td>artistName</td><td>true</td><td>string</td><td>Track's artist name</td></tr>
+                <tr><td>albumName</td><td>true</td><td>string</td><td>Track's album name</td></tr>
+                <tr><td>duration</td><td>true</td><td>number</td><td>Track's duration</td></tr>
+                <tr><td>plainLyrics</td><td>true</td><td>string</td><td>Plain lyrics for the track</td></tr>
+                <tr><td>syncedLyrics</td><td>true</td><td>string</td><td>Synchronized lyrics for the track</td></tr>
+              </tbody>
+            </table>
+          </p>
+
+          <h4>Response</h4>
+          <p class="text-green-800">Success response: 201 Created</p>
+          <p class="text-red-800">Failed response (incorrect Publish Token):</p>
+          <p>
+            <pre class="whitespace-pre-wrap">{
+  &quot;code&quot;: 400,
+  &quot;name&quot;: &quot;IncorrectPublishTokenError&quot;,
+  &quot;message&quot;: &quot;The provided publish token is incorrect&quot;
+}</pre>
+          </p>
+        </template>
+      </ApiBlock>
+
+      <ApiBlock>
+        <template #title>Request a challenge</template>
+        <template #method>POST</template>
+        <template #route>/api/request-challenge</template>
+        <template #description>
+          <p><strong>Note:</strong> This API is experimental and subject to potential changes in the future.</p>
+          <p>
+            Generate a pair of <code>prefix</code> and <code>target</code> strings for the cryptographic challenge.
+            Each challenge has an expiration time of 5 minutes.
+          </p>
+          <p>
+            The challenge's solution is a <code>nonce</code>, which can be used to create a Publish Token for submitting lyrics to LRCLIB.
+          </p>
+
+          <h4>Example response</h4>
+          <p>
+            <pre>{
+  "prefix": "VXMwW2qPfW2gkCNSl1i708NJkDghtAyU",
+  "target": "000000FF00000000000000000000000000000000000000000000000000000000"
+}</pre>
           </p>
         </template>
       </ApiBlock>
