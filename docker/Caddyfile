@@ -1,0 +1,18 @@
+{
+    auto_https off
+}
+
+:3000
+
+route {
+    header Cache-Control "no-store, no-cache, must-revalidate"
+    header /js/* Cache-Control "max-age=31536000"
+    header /css/* Cache-Control "max-age=31536000"
+    header /img/* Cache-Control "max-age=31536000"
+}
+
+try_files {path} {path}/ /index.html
+
+root * /app
+
+file_server
