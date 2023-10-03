@@ -106,18 +106,8 @@
         <template #route>/api/get-cached</template>
         <template #description>
           <p>
-            Attempt to find the best match of lyrics for the track. You must provide
-            the exact signature of the track, including the track title, artist name,
-            album name, and the track's duration in seconds.
-          </p>
-          <p>
-            This API will NOT attempt to access external sources
-            in case the lyrics are not found in the internal database.
-          </p>
-          <p>
-            <strong>Note:</strong> The provided duration is crucial. LRCLIB will attempt to provide the lyrics
-            only when the duration matches the record in LRCLIB's database, or at least with
-            a difference of ±2 seconds in duration.
+            This API is similar to <code>/api/get</code>, except that it will only look for lyrics from internal database,
+            and will NOT attempt to access external sources.
           </p>
 
           <h4>Query parameters</h4>
@@ -141,11 +131,11 @@
 
           <h4>Example request</h4>
           <p>
-            <pre>GET /api/get-cached?artist_name=Borislav+Slavov&track_name=I+Want+to+Live&album_name=Baldur%27s+Gate+3+(Original+Game+Soundtrack)&duration=233</pre>
+            <pre>GET /api/get-cached?artist_name=Jeremy+Soule&track_name=Dragonborn&album_name=The+Elder+Scrolls+V:+Skyrim:+Original+Game+Soundtrack&duration=236</pre>
           </p>
 
           <h4>Example response</h4>
-          <p class="italic">Similar to <code>/api/get</code>'s response.</p>
+          <p class="italic">Please see the <code>/api/get</code>'s example response.</p>
         </template>
       </ApiBlock>
 
@@ -180,7 +170,7 @@
           </p>
 
           <h4>Example response</h4>
-          <p class="italic">Similar to <code>/api/get</code>'s response.</p>
+          <p class="italic">Please see the <code>/api/get</code>'s example response.</p>
         </template>
       </ApiBlock>
 
