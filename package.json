@@ -11,6 +11,7 @@
   "dependencies": {
     "@tailwindcss/typography": "^0.5.10",
     "autoprefixer": "^10.4.16",
+    "dayjs": "^1.11.10",
     "format-duration": "^3.0.2",
     "ky": "^1.0.1",
     "mdue": "^0.1.4",

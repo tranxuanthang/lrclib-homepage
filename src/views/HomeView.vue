@@ -11,10 +11,11 @@
             <Magnify />
           </button>
         </form>
-        <div class="text-xs text-indigo-400 uppercase flex flex-col md:flex-row gap-4 text-center">
-          <a class="text-indigo-400 hover:text-indigo-500 active:text-indigo-700 transition" href="https://github.com/tranxuanthang/lrcget" target="_blank">Download LRCGET</a>
-          <router-link class="text-indigo-400 hover:text-indigo-500 active:text-indigo-700 transition" to="/docs">API Documentation</router-link>
-          <a class="text-indigo-400 hover:text-indigo-500 active:text-indigo-700 transition" href="#" @click.prevent="isShowDonation = true">Donation</a>
+        <div class="text-sm uppercase flex flex-col md:flex-row gap-2 text-center">
+          <a class="link" href="https://github.com/tranxuanthang/lrcget" target="_blank">Download LRCGET</a>
+          <router-link class="link" to="/docs">API Documentation</router-link>
+          <router-link class="link" to="/db-dumps">Database Dumps</router-link>
+          <a class="link flex items-center gap-0.5" href="#" @click.prevent="isShowDonation = true">Donation <Heart /></a>
         </div>
       </div>
     </main>
@@ -26,7 +27,7 @@
 </template>
 
 <script setup>
-import { Magnify } from 'mdue'
+import { Magnify, Heart } from 'mdue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import Donation from '../components/Donation.vue'
@@ -45,3 +46,9 @@ const onSubmit = () => {
   router.push({ name: 'search', params: { keyword: keyword.value } })
 }
 </script>
+
+<style scoped>
+.link {
+  @apply rounded-lg px-3 py-1.5 text-xs text-indigo-600 hover:bg-indigo-50 transition;
+}
+</style>

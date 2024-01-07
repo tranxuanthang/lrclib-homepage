@@ -7,10 +7,59 @@
           <button class="button button-blend transition rounded-full p-4" @click="close"><Close /></button>
         </div>
 
-        <div class="px-6 grow flex flex-col justify-center gap-4 overflow-hidden">
-          <div class="text-center font-thin text-2xl mb-4">Monero (XMR)</div>
-          <div class="bg-indigo-900 rounded px-4 py-2 text-indigo-100 break-all">43ZN5qDdGQhPGthFnngD8rjCHYLsEFBcyJjDC1GPZzVxWSfT8R48QCLNGyy6Z9LvatF5j8kSgv23DgJpixJg8bnmMnKm3b7</div>
-          <div class="flex justify-center"><img src="@/assets/xmr.png" alt="XMR" class="w-[60%]" width="1032" height="1032"></div>
+        <div class="px-6 grow flex flex-col gap-4 overflow-hidden">
+          <div class="flex justify-center">
+            <div class="rounded-full p-1 bg-indigo-100 flex justify-center gap-1">
+              <button
+                class="button text-xs w-36 px-3 py-1.5 rounded-full"
+                :class="{
+                  'bg-indigo-800 text-indigo-100': donationChoice === 'buymeacoffee',
+                  'hover:bg-indigo-200': donationChoice !== 'buymeacoffee'
+                  }"
+                @click="donationChoice = 'buymeacoffee'"
+              >Buy Me A Coffee</button>
+              <button
+                class="button text-xs w-36 px-3 py-1.5 rounded-full"
+                :class="{
+                  'bg-indigo-800 text-indigo-100': donationChoice === 'cryptocurrency',
+                  'hover:bg-indigo-200': donationChoice !== 'cryptocurrency'
+                  }"
+                @click="donationChoice = 'cryptocurrency'"
+              >Cryptocurrency</button>
+            </div>
+          </div>
+
+          <div class="grow flex flex-col">
+            <div v-if="donationChoice === 'buymeacoffee'" class="w-full flex flex-col items-center">
+              <div class="text-center italic text-xs mb-4">Thank you for being here!
+                LRCLIB is always free and nonprofit.
+                However, maintaining and developing LRCLIB requires both time and financial resources.
+                If you can, please consider a donation—every amount, no matter how small, is appreciated!</div>
+
+              <div class="text-center font-thin text-2xl mb-4">Buy Me A Coffee</div>
+
+              <a href="https://www.buymeacoffee.com/thangtran" class="mb-8" target="_blank">
+                <img
+                  src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=thangtran&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"
+                  width="235"
+                  height="72"
+                /></a>
+
+              <div class="flex justify-center"><img src="@/assets/bmc.png" alt="BMC" class="w-[50%]" width="1032" height="1032"></div>
+            </div>
+
+            <div v-if="donationChoice === 'cryptocurrency'">
+              <div class="text-center italic text-xs mb-4">Thank you for being here!
+                LRCLIB is always free and nonprofit.
+                However, maintaining and developing LRCLIB requires both time and financial resources.
+                If you can, please consider a donation—every amount, no matter how small, is appreciated!</div>
+
+              <div class="text-center font-thin text-2xl mb-4">Monero (XMR)</div>
+
+              <div class="bg-indigo-900 rounded px-4 py-2 text-indigo-100 break-all">43ZN5qDdGQhPGthFnngD8rjCHYLsEFBcyJjDC1GPZzVxWSfT8R48QCLNGyy6Z9LvatF5j8kSgv23DgJpixJg8bnmMnKm3b7</div>
+              <div class="flex justify-center"><img src="@/assets/xmr.png" alt="XMR" class="w-[50%]" width="1032" height="1032"></div>
+            </div>
+          </div>
         </div>
 
         <div class="px-6 py-4 flex-none flex justify-center">
@@ -30,6 +79,8 @@ import { ref, onMounted } from 'vue'
 
 const emit = defineEmits(['close'])
 const props = defineProps(['isShow'])
+
+const donationChoice = ref('buymeacoffee')
 
 const close = () => {
   emit('close')
