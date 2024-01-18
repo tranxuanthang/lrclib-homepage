@@ -7,7 +7,7 @@
           <button class="button button-blend transition rounded-full p-4" @click="close"><Close /></button>
         </div>
 
-        <div class="px-6 grow flex flex-col gap-4 overflow-hidden">
+        <div class="px-6 grow flex flex-col gap-4 overflow-scroll">
           <div class="flex justify-center">
             <div class="rounded-full p-1 bg-indigo-100 flex justify-center gap-1">
               <button
