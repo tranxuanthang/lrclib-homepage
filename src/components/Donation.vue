@@ -56,8 +56,11 @@
 
               <div class="text-center font-thin text-2xl mb-4">Monero (XMR)</div>
 
-              <div class="bg-indigo-900 rounded px-4 py-2 text-indigo-100 break-all">43ZN5qDdGQhPGthFnngD8rjCHYLsEFBcyJjDC1GPZzVxWSfT8R48QCLNGyy6Z9LvatF5j8kSgv23DgJpixJg8bnmMnKm3b7</div>
-              <div class="flex justify-center"><img src="@/assets/xmr.png" alt="XMR" class="w-[50%]" width="1032" height="1032"></div>
+              <div class="bg-indigo-900 rounded px-4 py-2 text-indigo-100 break-all mb-8">43ZN5qDdGQhPGthFnngD8rjCHYLsEFBcyJjDC1GPZzVxWSfT8R48QCLNGyy6Z9LvatF5j8kSgv23DgJpixJg8bnmMnKm3b7</div>
+
+              <div class="text-center font-thin text-2xl mb-4">Litecoin (LTC)</div>
+
+              <div class="bg-indigo-900 rounded px-4 py-2 text-indigo-100 break-all">ltc1q7texq5qsp59gclqlwf6asrqmhm98gruvz94a48</div>
             </div>
           </div>
         </div>
