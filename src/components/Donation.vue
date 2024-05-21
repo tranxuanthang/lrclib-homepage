@@ -17,7 +17,7 @@
                   'hover:bg-indigo-200': donationChoice !== 'buymeacoffee'
                   }"
                 @click="donationChoice = 'buymeacoffee'"
-              >Buy Me A Coffee</button>
+              >Fiat</button>
               <button
                 class="button text-xs w-36 px-3 py-1.5 rounded-full"
                 :class="{
@@ -36,6 +36,12 @@
                 However, maintaining and developing LRCLIB requires both time and financial resources.
                 If you can, please consider a donation—every amount, no matter how small, is appreciated!</div>
 
+              <div class="text-center font-thin text-2xl mb-4">GitHub Sponsors</div>
+
+              <a href="https://github.com/sponsors/tranxuanthang" class="mb-8" target="_blank">
+                https://github.com/sponsors/tranxuanthang
+              </a>
+
               <div class="text-center font-thin text-2xl mb-4">Buy Me A Coffee</div>
 
               <a href="https://www.buymeacoffee.com/thangtran" class="mb-8" target="_blank">
@@ -45,7 +51,11 @@
                   height="72"
                 /></a>
 
-              <div class="flex justify-center"><img src="@/assets/bmc.png" alt="BMC" class="w-[50%]" width="1032" height="1032"></div>
+              <div class="text-center font-thin text-2xl mb-4">Paypal</div>
+
+              <a href="https://paypal.me/tranxuanthang98" class="mb-8" target="_blank">
+                https://paypal.me/tranxuanthang98
+              </a>
             </div>
 
             <div v-if="donationChoice === 'cryptocurrency'">
