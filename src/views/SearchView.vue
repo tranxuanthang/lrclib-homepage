@@ -82,7 +82,13 @@ const doSearch = async (q) => {
   keyword.value = q
   currentKeyword.value = q
   try {
-    const response = await ky.get('https://lrclib.net/api/search', { searchParams: { q } }).json()
+    const response = await ky.get('https://lrclib.net/api/search', {
+      searchParams: { q },
+      headers: {
+        'User-Agent': 'LRCLIB Web Client (https://github.com/tranxuanthang/lrclib)',
+        'X-User-Agent': 'LRCLIB Web Client (https://github.com/tranxuanthang/lrclib)'
+      }
+    }).json()
     records.value = response
   } catch (error) {
     if (error.message) {
