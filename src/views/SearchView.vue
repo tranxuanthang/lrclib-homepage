@@ -86,7 +86,8 @@ const doSearch = async (q) => {
       searchParams: { q },
       headers: {
         'User-Agent': 'LRCLIB Web Client (https://github.com/tranxuanthang/lrclib)',
-        'X-User-Agent': 'LRCLIB Web Client (https://github.com/tranxuanthang/lrclib)'
+        'X-User-Agent': 'LRCLIB Web Client (https://github.com/tranxuanthang/lrclib)',
+        'Lrclib-Client': 'LRCLIB Web Client (https://github.com/tranxuanthang/lrclib)',
       }
     }).json()
     records.value = response
