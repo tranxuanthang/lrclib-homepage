@@ -16,24 +16,24 @@
               </div>
             </div>
 
-            <div v-if="lyricsType === 'synced'" class="grow rounded bg-indigo-50 text-indigo-900 whitespace-pre-line p-4 overflow-scroll">
+            <div v-if="lyricsType === 'synced'" class="grow rounded bg-indigo-50 text-indigo-900 whitespace-pre-line p-4 overflow-auto">
               {{ props.record.syncedLyrics }}
             </div>
 
-            <div v-else-if="lyricsType === 'plain'" class="grow rounded bg-indigo-50 text-indigo-900 whitespace-pre-line p-4 overflow-scroll">
+            <div v-else-if="lyricsType === 'plain'" class="grow rounded bg-indigo-50 text-indigo-900 whitespace-pre-line p-4 overflow-auto">
               {{ props.record.plainLyrics }}
             </div>
           </template>
 
-          <div v-else-if="props.record.plainLyrics" class="grow rounded bg-indigo-50 text-indigo-900 whitespace-pre-line p-4 overflow-scroll">
+          <div v-else-if="props.record.plainLyrics" class="grow rounded bg-indigo-50 text-indigo-900 whitespace-pre-line p-4 overflow-auto">
             {{ props.record.plainLyrics }}
           </div>
 
-          <div v-else-if="props.record.instrumental" class="grow rounded bg-indigo-50 text-indigo-900 whitespace-pre-line p-4 overflow-scroll italic flex items-center justify-center">
+          <div v-else-if="props.record.instrumental" class="grow rounded bg-indigo-50 text-indigo-900 whitespace-pre-line p-4 overflow-auto italic flex items-center justify-center">
             This track is instrumental
           </div>
 
-          <div v-else class="grow rounded bg-indigo-50 text-indigo-900 whitespace-pre-line p-4 overflow-scroll italic flex items-center justify-center">
+          <div v-else class="grow rounded bg-indigo-50 text-indigo-900 whitespace-pre-line p-4 overflow-auto italic flex items-center justify-center">
             There is currently no lyrics submitted for this track
           </div>
         </div>
