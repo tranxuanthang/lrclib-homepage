@@ -51,7 +51,7 @@
 
 <script setup>
 import { Close } from 'mdue'
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 
 const emit = defineEmits(['close'])
 const props = defineProps(['record'])
